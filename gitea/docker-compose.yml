@@ -8,9 +8,9 @@ services:
       - USER_GID=1000
       - DB_TYPE=mysql
       - DB_HOST=mariadb:3306
-      - DB_NAME="${mysql_database}"
-      - DB_USER="${mysql_user}"
-      - DB_PASSWD="${mysql_user_password}"
+      - DB_NAME=${mysql_database}
+      - DB_USER=${mysql_user}
+      - DB_PASSWD=${mysql_user_password}
     volumes:
       - gitea:/data
     ports:
@@ -22,10 +22,10 @@ services:
   mariadb:
     image: mariadb:latest
     environment:
-      - MYSQL_ROOT_PASSWORD="${mysql_root_password}"
-      - MYSQL_DATABASE="${mysql_database}"
-      - MYSQL_USER="${mysql_user}"
-      - MYSQL_PASSWORD="${mysql_user_password}"
+      - MYSQL_ROOT_PASSWORD=${mysql_root_password}
+      - MYSQL_DATABASE=${mysql_database}
+      - MYSQL_USER=${mysql_user}
+      - MYSQL_PASSWORD=${mysql_user_password}
     volumes:
       - mariadb:/var/lib/mysql
   
@@ -33,9 +33,9 @@ services:
     image: gitea/act_runner:latest
     environment:
       - GITEA_INSTANCE_URL=http://gitea:3000
-      - GITEA_RUNNER_REGISTRATION_TOKEN="${runner_token}"
-      - GITEA_RUNNER_NAME="${runner_name}"
-      - GITEA_RUNNER_LABELS="${runner_labels}"
+      - GITEA_RUNNER_REGISTRATION_TOKEN=${runner_token}
+      - GITEA_RUNNER_NAME=${runner_name}
+      - GITEA_RUNNER_LABELS=${runner_labels}
     depends_on:
       - gitea
       
